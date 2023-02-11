@@ -16,7 +16,7 @@ USER_CONFIG_PATH="$(realpath -e ${HOME}/printer_data/config)"
 # Where to clone Frix-x repository config files (read-only and keep untouched)
 FRIX_CONFIG_PATH="${HOME}/frix-x_config"
 # Where to clone ERCF-Software-V3 repository config files (read-only and keep untouched)
-ERCF_SOFTWARE_V3 _PATH="${HOME}/ERCF-Software-V3"
+ERCF_SOFTWARE_V3_PATH="${HOME}/ERCF-Software-V3"
 # Path used to store backups when updating (backups are automatically dated when saved inside)
 BACKUP_PATH="${HOME}/frix-x_config_backups"
 
