@@ -78,8 +78,8 @@ function check_download {
     local frixtemppath frixreponame ercfrepopath ercfreponame
     frixtemppath="$(dirname ${FRIX_CONFIG_PATH})"
     frixreponame="$(basename ${FRIX_CONFIG_PATH})"
-    ercfrepopath="$(dirname ${ERCF_SOFTWARE_V3 _PATH})"
-    ercfreponame="$(basename ${ERCF_SOFTWARE_V3 _PATH})"
+    ercfrepopath="$(dirname ${ERCF_SOFTWARE_V3_PATH})"
+    ercfreponame="$(basename ${ERCF_SOFTWARE_V3_PATH})"
 
     if [ ! -d "${FRIX_CONFIG_PATH}" ]; then
         echo "Downloading Frix-x configuration folder..."
@@ -100,7 +100,7 @@ function check_download {
         echo
         case $yn in
             y)
-                if [ ! -d "${ERCF_SOFTWARE_V3 _PATH}" ]; then
+                if [ ! -d "${ERCF_SOFTWARE_V3_PATH}" ]; then
                     echo "Downloading ERCF Software V3 configuration folder..."
                     if git -C $ercfrepopath clone https://github.com/moggieuk/ERCF-Software-V3.git $ercfreponame;
                         echo "Download complete!"
@@ -165,11 +165,11 @@ function install_config {
 # Step 5: Put the ercf plugin files in place to be ready to use if ERCF Software V3
 function link_ercf_plugin() {
     if [ "${INSTALL_ERCF}" -eq 1 ]; then
-        if [ -d "${ERCF_SOFTWARE_V3 _PATH}" ]; then
+        if [ -d "${ERCF_SOFTWARE_V3_PATH}" ]; then
             echo -e "Linking ercf extension to Klipper..."
             if [ -d "${KLIPPER_HOME}/klippy/extras" ]; then
-                for file in `cd ${ERCF_SOFTWARE_V3 _PATH}/extras ; ls *.py`; do
-                    ln -sf "${ERCF_SOFTWARE_V3 _PATH}/extras/${file}" "${KLIPPER_HOME}/klippy/extras/${file}"
+                for file in `cd ${ERCF_SOFTWARE_V3_PATH}/extras ; ls *.py`; do
+                    ln -sf "${ERCF_SOFTWARE_V3_PATH}/extras/${file}" "${KLIPPER_HOME}/klippy/extras/${file}"
                 done
             else
                 echo -e "ERCF modules not installed because Klipper 'extras' directory not found!"
