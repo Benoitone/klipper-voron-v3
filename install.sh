@@ -24,7 +24,7 @@ BACKUP_PATH="${HOME}/frix-x_config_backups"
 set -eu
 export LC_ALL=C
 
-prompt_yn() {
+function prompt_yn() {
     while true; do
         read -p "$@ (y/n)?" yn
         case "${yn}" in
