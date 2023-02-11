@@ -29,6 +29,7 @@ Installing this config folder should not be too complicated if you are already f
      cd ~/frix-x_config
      ./install.sh -e
      ```
+
   3. TODO: write how to setup the printer.cfg, wiring.cfg, overrides.cfg, ...
 
 
