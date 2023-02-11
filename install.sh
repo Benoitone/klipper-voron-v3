@@ -41,7 +41,7 @@ prompt_yn() {
 }
 
 INSTALL_ERCF=0
-while getopts "e" arg; do
+while getopts e arg; do
     case $arg in
         e) INSTALL_ERCF=1;;
     esac
@@ -170,7 +170,7 @@ function link_ercf_plugin() {
             echo -e "Linking ercf extension to Klipper..."
             if [ -d "${KLIPPER_PATH}/klippy/extras" ]; then
                 for file in `cd ${ERCF_SOFTWARE_V3_PATH}/extras ; ls *.py`; do
-                    ln -sf "${ERCF_SOFTWARE_V3_PATH}/extras/${file}" "${KLIPPER_HOME}/klippy/extras/${file}"
+                    ln -sf "${ERCF_SOFTWARE_V3_PATH}/extras/${file}" "${KLIPPER_PATH}/klippy/extras/${file}"
                 done
             else
                 echo -e "ERCF modules not installed because Klipper 'extras' directory not found!"
