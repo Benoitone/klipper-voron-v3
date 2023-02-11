@@ -103,7 +103,7 @@ function check_download {
             y)
                 if [ ! -d "${ERCF_SOFTWARE_V3_PATH}" ]; then
                     echo "Downloading ERCF Software V3 configuration folder..."
-                    if git -C $ercfrepopath clone https://github.com/moggieuk/ERCF-Software-V3.git $ercfreponame;
+                    if git -C $ercfrepopath clone https://github.com/moggieuk/ERCF-Software-V3.git $ercfreponame; then
                         echo "Download complete!"
                     else
                         echo "Download of ERCF Software V3 configuration git repository failed!"
