@@ -40,7 +40,7 @@ prompt_yn() {
     done
 }
 
-INSTALL_OPTIONS=0
+INSTALL_ERCF=0
 while getopts "e" arg; do
     case $arg in
         e) INSTALL_ERCF=1;;
@@ -111,9 +111,9 @@ function check_download {
                 else
                     echo "ERCF Software V3 git repository folder found locally!"
                 fi
-                ;;
+            ;;
             n)
-                ;;
+            ;;
         esac
     fi
 }
