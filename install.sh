@@ -65,8 +65,8 @@ function preflight_checks {
         exit -1
     fi
     if [ ! -d "${KLIPPER_CONFIG_PATH}" ]; then
-        if [ ! -d "${PRINTER_DATA_CONFIG_PATH}" ]; then
-            echo -e "${ERROR}Klipper config directory (${KLIPPER_CONFIG_PATH} or ${USER_CONFIG_PATH}) not found."
+        if [ ! -d "${USER_CONFIG_PATH}" ]; then
+            echo -e "Klipper config directory (${KLIPPER_CONFIG_PATH} or ${USER_CONFIG_PATH}) not found."
             exit -1
         fi
         KLIPPER_CONFIG_PATH="${USER_CONFIG_PATH}"
