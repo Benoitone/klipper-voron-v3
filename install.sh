@@ -95,7 +95,7 @@ function check_download {
                     else
                         echo "ERCF Software V3 git repository folder found locally!"
                     fi;;
-                No ) ;;
+                No ) break;;
             esac
         done
     fi
