@@ -24,22 +24,6 @@ BACKUP_PATH="${HOME}/frix-x_config_backups"
 set -eu
 export LC_ALL=C
 
-function prompt_yn() {
-    while true; do
-        read -p "$@ (y/n)?" yn
-        case "${yn}" in
-            Y|y|Yes|yes)
-        echo "y" 
-                break;;
-            N|n|No|no)
-        echo "n" 
-                break;;
-            *)
-        ;;
-        esac
-    done
-}
-
 INSTALL_ERCF=0
 while getopts e arg; do
     case $arg in
@@ -96,27 +80,24 @@ function check_download {
 
     if [ "${INSTALL_ERCF}" -eq 1 ]; then
         echo
-        echo -e "Do you use an ERCF and do you want to use ERCF Software V3?"
-        echo
-        yn=$(prompt_yn "Do you want to use ERCF Software V3?")
-        case $yn in
-            y)
-                if [ ! -d "${ERCF_SOFTWARE_V3_PATH}" ]; then
-                    echo "Downloading ERCF Software V3 configuration folder..."
-                    if git -C $ercfrepopath clone https://github.com/moggieuk/ERCF-Software-V3.git $ercfreponame; then
-                        echo "Download complete!"
+        echo "Do you wish to install this program?"
+        select yn in "Yes" "No"; do
+            case $yn in
+                Yes ) 
+                    if [ ! -d "${ERCF_SOFTWARE_V3_PATH}" ]; then
+                        echo "Downloading ERCF Software V3 configuration folder..."
+                        if git -C $ercfrepopath clone https://github.com/moggieuk/ERCF-Software-V3.git $ercfreponame; then
+                            echo "Download complete!"
+                        else
+                            echo "Download of ERCF Software V3 configuration git repository failed!"
+                            exit -1
+                        fi
                     else
-                        echo "Download of ERCF Software V3 configuration git repository failed!"
-                        exit -1
-                    fi
-                else
-                    echo "ERCF Software V3 git repository folder found locally!"
-                fi
-            ;;
-            n)
-            ;;
-        esac
-    fi
+                        echo "ERCF Software V3 git repository folder found locally!"
+                    fi;;
+                No ) ;;
+            esac
+        done
 }
 
 # Step 3: Backup the old Klipper configuration
