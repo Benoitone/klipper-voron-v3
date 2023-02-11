@@ -98,6 +98,7 @@ function check_download {
                 No ) ;;
             esac
         done
+    fi
 }
 
 # Step 3: Backup the old Klipper configuration
