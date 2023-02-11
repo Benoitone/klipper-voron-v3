@@ -36,7 +36,6 @@ function prompt_yn() {
                 break;;
             *) 
                 echo "Please answer yes or no.";;
-        ;;
         esac
     done
 }
