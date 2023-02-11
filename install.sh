@@ -168,7 +168,7 @@ function link_ercf_plugin() {
     if [ "${INSTALL_ERCF}" -eq 1 ]; then
         if [ -d "${ERCF_SOFTWARE_V3_PATH}" ]; then
             echo -e "Linking ercf extension to Klipper..."
-            if [ -d "${KLIPPER_HOME}/klippy/extras" ]; then
+            if [ -d "${KLIPPER_PATH}/klippy/extras" ]; then
                 for file in `cd ${ERCF_SOFTWARE_V3_PATH}/extras ; ls *.py`; do
                     ln -sf "${ERCF_SOFTWARE_V3_PATH}/extras/${file}" "${KLIPPER_HOME}/klippy/extras/${file}"
                 done
