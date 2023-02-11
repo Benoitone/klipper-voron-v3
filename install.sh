@@ -96,8 +96,9 @@ function check_download {
 
     if [ "${INSTALL_ERCF}" -eq 1 ]; then
         echo
-        echo -e "Do you use an ERCF and do you want to use ERCF Software V3...${INPUT}"
+        echo -e "Do you use an ERCF and do you want to use ERCF Software V3?"
         echo
+        yn=$(prompt_yn "Do you want to use ERCF Software V3?")
         case $yn in
             y)
                 if [ ! -d "${ERCF_SOFTWARE_V3_PATH}" ]; then
