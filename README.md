@@ -20,7 +20,7 @@ Installing this config folder should not be too complicated if you are already f
   1. Use an SSH connection to connect to your printer and type the following command to run the install script. This should backup your old configuration, then download and replace it by my configuration and finally set up the environment for you.
 
      ```
-     wget -O - https://raw.githubusercontent.com/Frix-x/klipper-voron-V2/main/install.sh | bash
+     wget -O - https://raw.githubusercontent.com/Benoitone/klipper-voron-V3/master/install.sh | bash
      ```
 
   if you have an ERCF and want to use it from this config, you must run:
