@@ -13,12 +13,12 @@
 KLIPPER_PATH="${HOME}/klipper"
 KLIPPER_CONFIG_PATH="${HOME}/klipper_config"
 USER_CONFIG_PATH="$(realpath -e ${HOME}/printer_data/config)"
-# Where to clone Frix-x repository config files (read-only and keep untouched)
-FRIX_CONFIG_PATH="${HOME}/frix-x_config"
+# Where to clone benoit repository config files (read-only and keep untouched)
+FRIX_CONFIG_PATH="${HOME}/benoit_config"
 # Where to clone ERCF-Software-V3 repository config files (read-only and keep untouched)
 ERCF_SOFTWARE_V3_PATH="${HOME}/ERCF-Software-V3"
 # Path used to store backups when updating (backups are automatically dated when saved inside)
-BACKUP_PATH="${HOME}/frix-x_config_backups"
+BACKUP_PATH="${HOME}/benoit_config_backups"
 
 
 set -eu
@@ -82,16 +82,16 @@ function check_download {
     ercfreponame="$(basename ${ERCF_SOFTWARE_V3_PATH})"
 
     if [ ! -d "${FRIX_CONFIG_PATH}" ]; then
-        echo "Downloading Frix-x configuration folder..."
+        echo "Downloading benoit configuration folder..."
         if git -C $frixtemppath clone https://github.com/Benoitone/klipper-voron-v3.git $frixreponame; then
             chmod +x ${FRIX_CONFIG_PATH}/install.sh
             echo "Download complete!"
         else
-            echo "Download of Frix-x configuration git repository failed!"
+            echo "Download of benoit configuration git repository failed!"
             exit -1
         fi
     else
-        echo "Frix-x git repository folder found locally!"
+        echo "benoit git repository folder found locally!"
     fi
 
     if [ "${INSTALL_ERCF}" -eq 1 ]; then
@@ -122,7 +122,7 @@ function backup_config {
     mkdir -p ${BACKUP_DIR}
 
     if [ -f "${USER_CONFIG_PATH}/.VERSION" ]; then
-        echo "Frix-x configuration already in use: only a backup of the custom user cfg files is needed"
+        echo "benoit configuration already in use: only a backup of the custom user cfg files is needed"
         find ${USER_CONFIG_PATH} -type f -regex '.*\.\(cfg\|conf\|VERSION\)' | xargs mv -t ${BACKUP_DIR}/ 2>/dev/null
     else
         echo "New installation detected: a full backup of the user config folder is needed"
@@ -134,10 +134,10 @@ function backup_config {
 
 # Step 4: Put the new configuration files in place to be ready to start
 function install_config {
-    echo "Installation of the last Frix-x Klipper configuration files"
+    echo "Installation of the last benoit Klipper configuration files"
     mkdir -p ${USER_CONFIG_PATH}
 
-    # Symlink Frix-x config folders (read-only git repository) to the user's config directory
+    # Symlink benoit config folders (read-only git repository) to the user's config directory
     for dir in config macros scripts moonraker; do
         ln -fsn ${FRIX_CONFIG_PATH}/$dir ${USER_CONFIG_PATH}/$dir
     done
@@ -194,4 +194,4 @@ install_config
 link_ercf_plugin
 restart_klipper
 
-echo "Everything is ok, Frix-x config installed and up to date!"
+echo "Everything is ok, benoit config installed and up to date!"
