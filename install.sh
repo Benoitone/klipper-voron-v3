@@ -83,7 +83,7 @@ function check_download {
 
     if [ ! -d "${FRIX_CONFIG_PATH}" ]; then
         echo "Downloading benoit configuration folder..."
-        if git -C $frixtemppath clone https://github.com/Benoitone/klipper-voron-v3.git $frixreponame; then
+        if git -C $frixtemppath clone -b v3.0.0 https://github.com/Benoitone/klipper-voron-v3.git $frixreponame; then
             chmod +x ${FRIX_CONFIG_PATH}/install.sh
             echo "Download complete!"
         else
